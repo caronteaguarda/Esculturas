@@ -101,11 +101,13 @@
     </style>
 </head>
 <body>
-    <h1>Galería de Imágenes</h1>
-       <!-- Texto "Animales" ocupando toda la fila -->
-<div class="full-width-text">
+<h1 id="gallery-title">Galería de Imágenes</h1>
+
+<!-- Texto "Animales" ocupando toda la fila -->
+<div class="full-width-text" id="first-category">
     <p><strong>Animales</strong></p>
 </div>
+
   <div id="image-container" class="image-container">
         <!-- Imagen 1 -->
         <div class="image-card" onclick="showImage(1)">
@@ -149,7 +151,7 @@
         </div>
              <!-- Texto "Prehistoria" ocupando toda la fila -->
 <div class="full-width-text">
-    <p><strong>Animales</strong></p>
+    <p><strong>Prehistoria</strong></p>
 </div>
         <!-- Imagen 9 -->
         <div class="image-card" onclick="showImage(9)">
@@ -241,25 +243,35 @@
 
     <script>
         // Función para mostrar la imagen seleccionada
-        function showImage(imageNumber) {
-            // Ocultamos la vista de imágenes y el contenedor principal
-            document.getElementById("image-container").style.display = "none";
-            // Mostramos la vista de la imagen seleccionada
-            document.getElementById("image-view-" + imageNumber).style.display = "block";
-            // Mostramos el botón flotante cuando se muestra una imagen
-            document.querySelector(".floating-btn").style.display = "block";
-        }
+      function showImage(imageNumber) {
+    // Ocultar elementos
+    document.getElementById("gallery-title").style.display = "none"; // Oculta el título
+    document.getElementById("first-category").style.display = "none"; // Oculta "Animales"
+    document.getElementById("image-container").style.display = "none"; // Oculta la galería
+    
+    // Mostrar la imagen seleccionada
+    document.getElementById("image-view-" + imageNumber).style.display = "block";
+
+    // Mostrar el botón flotante
+    document.querySelector(".floating-btn").style.display = "block";
+}
+
 
         // Función para volver al inicio
-        function goBack() {
-            // Ocultamos la vista de la imagen seleccionada
-            const views = document.querySelectorAll('.image-view');
-            views.forEach(view => view.style.display = "none");
-            // Mostramos el contenedor principal de imágenes
-            document.getElementById("image-container").style.display = "grid";
-            // Ocultamos el botón flotante cuando estamos en la vista inicial
-            document.querySelector(".floating-btn").style.display = "none";
-        }
+     function goBack() {
+    // Mostrar elementos nuevamente
+    document.getElementById("gallery-title").style.display = "block"; // Muestra el título
+    document.getElementById("first-category").style.display = "block"; // Muestra "Animales"
+    document.getElementById("image-container").style.display = "grid"; // Muestra la galería
+
+    // Ocultar todas las imágenes en vista individual
+    const views = document.querySelectorAll('.image-view');
+    views.forEach(view => view.style.display = "none");
+
+    // Ocultar el botón flotante
+    document.querySelector(".floating-btn").style.display = "none";
+}
+
     </script>
 </body>
 </html>
