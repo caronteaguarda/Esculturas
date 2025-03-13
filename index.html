@@ -63,6 +63,14 @@
             display: none;
             text-align: center;
         }
+#aure-title p {
+    font-family: 'Creepster', cursive;  /* Fuente gótica tipo Creepster */
+    font-size: 22px;  /* Tamaño más grande si lo deseas */
+    font-weight: normal;  
+    margin-top: 20px;
+    text-align: center;
+}
+
 
         /* Estilos para el botón flotante */
         .floating-btn {
@@ -102,6 +110,11 @@
 </head>
 <body>
 <h1 id="gallery-title">Galería de Imágenes</h1>
+
+<!-- Título "Piezas de Aureliano" después de las últimas 4 imágenes -->
+<div class="full-width-text" id="aure-title">
+    <p><strong>Piezas de Aure</strong></p>
+</div>
 
 <!-- Texto "Animales" ocupando toda la fila -->
 <div class="full-width-text" id="first-category">
@@ -169,6 +182,10 @@
         <div class="image-card" onclick="showImage(12)">
             <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh4.jpeg?raw=true" alt="Imagen 12">
         </div>
+<!-- Título "Piezas de Aure" después de las últimas 4 imágenes -->
+<div class="full-width-text" id="aure-title">
+    <p><strong>Piezas de Amalia</strong></p>
+</div>
     </div>
 
     <!-- Vista de la imagen seleccionada -->
@@ -248,7 +265,10 @@
     document.getElementById("gallery-title").style.display = "none"; // Oculta el título
     document.getElementById("first-category").style.display = "none"; // Oculta "Animales"
     document.getElementById("image-container").style.display = "none"; // Oculta la galería
-    
+document.getElementById("aure-title").style.display = "none"; // Oculta subtitulo
+
+   
+
     // Mostrar la imagen seleccionada
     document.getElementById("image-view-" + imageNumber).style.display = "block";
 
@@ -263,7 +283,7 @@
     document.getElementById("gallery-title").style.display = "block"; // Muestra el título
     document.getElementById("first-category").style.display = "block"; // Muestra "Animales"
     document.getElementById("image-container").style.display = "grid"; // Muestra la galería
-
+document.getElementById("aure-title").style.display = "grid"; // Muestra subtitulo la galería
     // Ocultar todas las imágenes en vista individual
     const views = document.querySelectorAll('.image-view');
     views.forEach(view => view.style.display = "none");
