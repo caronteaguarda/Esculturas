@@ -10,10 +10,29 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #f0f0f0;
             margin: 0;
             padding: 20px;
+            position: relative; /* necesario para el fondo diagonal */
+            overflow-x: hidden;
         }
+
+        /* Fondo diagonal con mosaico */
+       body::before {
+    content: "";
+    position: fixed;
+    top: -200%;
+    left: -200%;
+    width: 400%;
+    height: 400%;
+    background-image: url("ContaresLogoAlfa.png");
+    background-repeat: repeat;
+    background-size: 220px 220px;
+    opacity: 0.12;
+    transform: rotate(45deg);
+    z-index: -1;
+    pointer-events: none;
+}
+
         h1 {
             margin-bottom: 40px;
         }
@@ -101,7 +120,6 @@
     <div class="full-width-text section-title">Prehistoria</div>
 </div>
 
-
 <!-- Sección Aureliano -->
 <div class="image-container" id="image-container">
     <div class="image-card" onclick="showImage(9, 'aureliano')">
@@ -117,10 +135,12 @@
         <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh4.jpeg?raw=true" alt="Imagen 12">
     </div>
 </div>
+
 <div id="title-alicia">
     <div class="full-width-text section-title">Piezas de Alicia Carmona</div>
     <div class="full-width-text section-title">Indeterminado</div>
 </div>
+
 <!-- Sección Alicia -->
 <div class="image-container" id="image-container-alicia">
     <div class="image-card" onclick="showImage('a1', 'alicia')">
@@ -153,11 +173,13 @@
     <p>Serie Prehistoria. Relieve en aluminio. Fundición 75x37 mm.</p>
     <p><strong><em>Guerrero.</em></strong></p>
 </div>
+
 <div id="image-view-11" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh3.jpeg?raw=true" style="width:80%; max-width:600px;">
     <p>Serie Prehistoria. Relieve en aluminio. Fundición 75x37 mm.</p>
     <p><strong><em>Cazador.</em></strong></p>
 </div>
+
 <div id="image-view-12" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh4.jpeg?raw=true" style="width:80%; max-width:600px;">
     <p>Serie Prehistoria. Relieve en aluminio. Fundición 75x37 mm.</p>
@@ -165,28 +187,31 @@
     <p><a href="https://www.elnacional.cat/es/cultura/cogul-roca-moros-arte-rupestre_294801_102.html" target="_blank">Más información</a></p>
 </div>
 
-
 <!-- Vistas individuales Alicia -->
 <div id="image-view-a1" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/Alicia%20Cer%C3%A1micaRoja.jpeg?raw=true" style="width:80%; max-width:600px;">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <p><strong><em>Lorem ipsum dolor sit amet, consectetur.</em></strong></p>
 </div>
+
 <div id="image-view-a2" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/Alicia%20bustogris.jpeg?raw=true" style="width:80%; max-width:600px;">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <p><strong><em>Lorem ipsum dolor sit amet, consectetur.</em></strong></p>
 </div>
+
 <div id="image-view-a3" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaBustoNegro.jpeg?raw=true" style="width:80%; max-width:600px;">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <p><strong><em>Lorem ipsum dolor sit amet, consectetur.</em></strong></p>
 </div>
+
 <div id="image-view-a4" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaCeramicaNegra.jpeg?raw=true" style="width:80%; max-width:600px;">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <p><strong><em>Lorem ipsum dolor sit amet, consectetur.</em></strong></p>
 </div>
+
 <div id="image-view-a5" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaVenus.jpeg?raw=true" style="width:80%; max-width:600px;">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -197,26 +222,22 @@
 
 <script>
 function showImage(id, artist) {
-    // Ocultar galería y títulos
     document.getElementById("gallery-title").style.display = "none";
     document.getElementById("image-container").style.display = "none";
     document.getElementById("image-container-alicia").style.display = "none";
     document.getElementById("title-aureliano").style.display = "none";
     document.getElementById("title-alicia").style.display = "none";
 
-    // Mostrar solo el título correspondiente
     if (artist === 'aureliano') {
         document.getElementById("title-aureliano").style.display = "block";
     } else if (artist === 'alicia') {
         document.getElementById("title-alicia").style.display = "block";
     }
 
-    // Mostrar la imagen seleccionada
     const views = document.querySelectorAll('.image-view');
     views.forEach(v => v.style.display = "none");
     document.getElementById("image-view-" + id).style.display = "block";
 
-    // Mostrar botón flotante
     document.querySelector(".floating-btn").style.display = "block";
 }
 
@@ -235,5 +256,3 @@ function goBack() {
 </script>
 </body>
 </html>
-
-
