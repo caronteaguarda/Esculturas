@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería de Obras</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,26 +13,26 @@
             align-items: center;
             margin: 0;
             padding: 20px;
-            position: relative; /* necesario para el fondo diagonal */
+            position: relative;
             overflow-x: hidden;
         }
 
         /* Fondo diagonal con mosaico */
-       body::before {
-    content: "";
-    position: fixed;
-    top: -200%;
-    left: -200%;
-    width: 400%;
-    height: 400%;
-    background-image: url("ContaresLogoAlfa.png");
-    background-repeat: repeat;
-    background-size: 220px 220px;
-    opacity: 0.12;
-    transform: rotate(45deg);
-    z-index: -1;
-    pointer-events: none;
-}
+        body::before {
+            content: "";
+            position: fixed;
+            top: -200%;
+            left: -200%;
+            width: 400%;
+            height: 400%;
+            background-image: url("ContaresLogoAlfa.png");
+            background-repeat: repeat;
+            background-size: 220px 220px;
+            opacity: 0.12;
+            transform: rotate(45deg);
+            z-index: -1;
+            pointer-events: none;
+        }
 
         h1 {
             margin-bottom: 40px;
@@ -94,9 +95,9 @@
             border: none;
             border-radius: 50px;
             font-size: 16px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s ease;
             display: none;
         }
 
@@ -109,150 +110,366 @@
             font-size: 20px;
             margin: 10px 0;
         }
+
+        /* 🎧 BOTÓN DE AUDIO MEJORADO */
+        .btn-audio {
+            padding: 10px 20px;
+            margin-top: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-audio:hover {
+            background: #388E3C;
+        }
+
+        .audio-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
     </style>
 </head>
+
 <body>
+
 <h1 id="gallery-title">Exposición Contares</h1>
 
-<!-- Títulos de cada sección -->
+<!-- Títulos -->
 <div id="title-aureliano">
     <div class="full-width-text section-title">Piezas de Aureliano Ferrero</div>
     <div class="full-width-text section-title">Prehistoria</div>
 </div>
 
-<!-- Sección Aureliano -->
+<!-- Aureliano -->
 <div class="image-container" id="image-container">
     <div class="image-card" onclick="showImage(9, 'aureliano')">
-        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh1.jpeg?raw=true" alt="Imagen 9">
+        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh1.jpeg?raw=true">
     </div>
     <div class="image-card" onclick="showImage(10, 'aureliano')">
-        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh2.jpeg?raw=true" alt="Imagen 10">
+        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh2.jpeg?raw=true">
     </div>
     <div class="image-card" onclick="showImage(11, 'aureliano')">
-        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh3.jpeg?raw=true" alt="Imagen 11">
+        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh3.jpeg?raw=true">
     </div>
     <div class="image-card" onclick="showImage(12, 'aureliano')">
-        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh4.jpeg?raw=true" alt="Imagen 12">
+        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh4.jpeg?raw=true">
     </div>
 </div>
 
+<!-- Alicia -->
 <div id="title-alicia">
     <div class="full-width-text section-title">Piezas de Alicia Carmona</div>
     <div class="full-width-text section-title">Indeterminado</div>
 </div>
 
-<!-- Sección Alicia -->
 <div class="image-container" id="image-container-alicia">
     <div class="image-card" onclick="showImage('a1', 'alicia')">
-        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/Alicia%20Cer%C3%A1micaRoja.jpeg?raw=true" alt="A1">
+        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/Alicia%20Cer%C3%A1micaRoja.jpeg?raw=true">
     </div>
     <div class="image-card" onclick="showImage('a2', 'alicia')">
-        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/Alicia%20bustogris.jpeg?raw=true" alt="A2">
+        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/Alicia%20bustogris.jpeg?raw=true">
     </div>
     <div class="image-card" onclick="showImage('a3', 'alicia')">
-        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaBustoNegro.jpeg?raw=true" alt="A3">
+        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaBustoNegro.jpeg?raw=true">
     </div>
     <div class="image-card" onclick="showImage('a4', 'alicia')">
-        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaCeramicaNegra.jpeg?raw=true" alt="A4">
+        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaCeramicaNegra.jpeg?raw=true">
     </div>
     <div class="image-card" onclick="showImage('a5', 'alicia')">
-        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaVenus.jpeg?raw=true" alt="A5">
+        <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaVenus.jpeg?raw=true">
     </div>
 </div>
 
-<!-- Vistas individuales Aureliano -->
+<!-- Vistas individuales -->
+<!-- Obra 9 CON AUDIO + ICONO -->
 <div id="image-view-9" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh1.jpeg?raw=true" style="width:80%; max-width:600px;">
     <p>Serie Prehistoria. Relieve en aluminio. Fundición 75x37 mm.</p>
-    <p><strong><em>Mujer recolectando miel. Pieza basada en las pinturas de la cueva de la araña. Valencia.</em></strong></p>
+    <p><strong><em>Mujer recolectando miel. Basado en la cueva de la Araña, Valencia.</em></strong></p>
+
     <p><a href="https://auladehistoria.org/comentario-cueva-la-arana-bicorp/" target="_blank">Más información</a></p>
+
+    <!-- 🔊 AUDIO -->
+    <div class="audio-control" data-audio="aurEscult.mp3">
+        <button type="button" class="btn-audio" aria-pressed="false">
+            <span class="audio-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2c0-1.77-.77-3.29-2-4.3v8.59c1.23-1.01 2-2.53 2-4.29zm2.5 0c0 3.04-1.23 5.52-3 7.24v-1.66c1.23-1.39 2-3.17 2-5.58s-.77-4.19-2-5.58V4.76c1.77 1.72 3 4.2 3 7.24z"/>
+                </svg>
+            </span>
+            Explicación de la obra
+        </button>
+    </div>
 </div>
 
+<!-- Obra 10 -->
 <div id="image-view-10" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh2.jpeg?raw=true" style="width:80%; max-width:600px;">
     <p>Serie Prehistoria. Relieve en aluminio. Fundición 75x37 mm.</p>
     <p><strong><em>Guerrero.</em></strong></p>
+
+    <!-- 🔊 AUDIO -->
+    <div class="audio-control" data-audio="aurEscult2.mp3">
+        <button type="button" class="btn-audio">
+            <span class="audio-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2c0-1.77-.77-3.29-2-4.3v8.59c1.23-1.01 2-2.53 2-4.29zm2.5 0c0 3.04-1.23 5.52-3 7.24v-1.66c1.23-1.39 2-3.17 2-5.58s-.77-4.19-2-5.58V4.76c1.77 1.72 3 4.2 3 7.24z"/>
+                </svg>
+            </span>
+            Explicación de la obra
+        </button>
+    </div>
 </div>
 
+<!-- Obra 11 -->
 <div id="image-view-11" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh3.jpeg?raw=true" style="width:80%; max-width:600px;">
     <p>Serie Prehistoria. Relieve en aluminio. Fundición 75x37 mm.</p>
     <p><strong><em>Cazador.</em></strong></p>
 </div>
 
+<!-- Obra 12 -->
 <div id="image-view-12" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/exppreh4.jpeg?raw=true" style="width:80%; max-width:600px;">
     <p>Serie Prehistoria. Relieve en aluminio. Fundición 75x37 mm.</p>
-    <p><strong><em>Mujer bailando. Basada en las pinturas de la cueva de Cogull. Lleida.</em></strong></p>
+    <p><strong><em>Mujer bailando. Cueva de Cogull, Lleida.</em></strong></p>
+
     <p><a href="https://www.elnacional.cat/es/cultura/cogul-roca-moros-arte-rupestre_294801_102.html" target="_blank">Más información</a></p>
 </div>
 
-<!-- Vistas individuales Alicia -->
+<!-- Alicia A1 -->
 <div id="image-view-a1" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/Alicia%20Cer%C3%A1micaRoja.jpeg?raw=true" style="width:80%; max-width:600px;">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <p><strong><em>Lorem ipsum dolor sit amet, consectetur.</em></strong></p>
+    <p>Lorem ipsum dolor sit amet.</p>
 </div>
 
+<!-- Alicia A2 -->
 <div id="image-view-a2" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/Alicia%20bustogris.jpeg?raw=true" style="width:80%; max-width:600px;">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <p><strong><em>Lorem ipsum dolor sit amet, consectetur.</em></strong></p>
+    <p>Lorem ipsum dolor sit amet.</p>
 </div>
 
+<!-- Alicia A3 -->
 <div id="image-view-a3" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaBustoNegro.jpeg?raw=true" style="width:80%; max-width:600px;">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <p><strong><em>Lorem ipsum dolor sit amet, consectetur.</em></strong></p>
+    <p>Lorem ipsum dolor sit amet.</p>
 </div>
 
+<!-- Alicia A4 -->
 <div id="image-view-a4" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaCeramicaNegra.jpeg?raw=true" style="width:80%; max-width:600px;">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <p><strong><em>Lorem ipsum dolor sit amet, consectetur.</em></strong></p>
+    <p>Lorem ipsum dolor.</p>
 </div>
 
+<!-- Alicia A5 -->
 <div id="image-view-a5" class="image-view">
     <img src="https://github.com/caronteaguarda/Esculturas/blob/main/AliciaVenus.jpeg?raw=true" style="width:80%; max-width:600px;">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <p><strong><em>Lorem ipsum dolor sit amet, consectetur.</em></strong></p>
+    <p>Lorem ipsum dolor sit amet.</p>
 </div>
 
 <button class="floating-btn" onclick="goBack()">Volver al inicio</button>
 
 <script>
 function showImage(id, artist) {
-    document.getElementById("gallery-title").style.display = "none";
-    document.getElementById("image-container").style.display = "none";
-    document.getElementById("image-container-alicia").style.display = "none";
-    document.getElementById("title-aureliano").style.display = "none";
-    document.getElementById("title-alicia").style.display = "none";
+    // Al cambiar de vista, pausamos cualquier audio activo y restauramos su botón
+    if (window._currentAudio && typeof window._resetCurrentAudio === 'function') {
+        window._resetCurrentAudio();
+    }
 
-    if (artist === 'aureliano') {
-        document.getElementById("title-aureliano").style.display = "block";
-    } else if (artist === 'alicia') {
-        document.getElementById("title-alicia").style.display = "block";
+    document.getElementById("gallery-title").style.display = "none";
+    const imgCont = document.getElementById("image-container");
+    if (imgCont) imgCont.style.display = "none";
+    const imgContA = document.getElementById("image-container-alicia");
+    if (imgContA) imgContA.style.display = "none";
+    const tA = document.getElementById("title-aureliano");
+    const tAl = document.getElementById("title-alicia");
+    if (tA) tA.style.display = "none";
+    if (tAl) tAl.style.display = "none";
+
+    if (artist === 'aureliano' && tA) {
+        tA.style.display = "block";
+    } else if (artist === 'alicia' && tAl) {
+        tAl.style.display = "block";
     }
 
     const views = document.querySelectorAll('.image-view');
     views.forEach(v => v.style.display = "none");
-    document.getElementById("image-view-" + id).style.display = "block";
+    const target = document.getElementById("image-view-" + id);
+    if (target) target.style.display = "block";
 
-    document.querySelector(".floating-btn").style.display = "block";
+    const fbtn = document.querySelector(".floating-btn");
+    if (fbtn) fbtn.style.display = "block";
 }
 
 function goBack() {
-    document.getElementById("gallery-title").style.display = "block";
-    document.getElementById("image-container").style.display = "flex";
-    document.getElementById("image-container-alicia").style.display = "flex";
-    document.getElementById("title-aureliano").style.display = "block";
-    document.getElementById("title-alicia").style.display = "block";
+    // Pausar audio activo al volver
+    if (window._currentAudio && typeof window._resetCurrentAudio === 'function') {
+        window._resetCurrentAudio();
+    }
+
+    const galleryTitle = document.getElementById("gallery-title");
+    if (galleryTitle) galleryTitle.style.display = "block";
+    const imgCont = document.getElementById("image-container");
+    if (imgCont) imgCont.style.display = "flex";
+    const imgContA = document.getElementById("image-container-alicia");
+    if (imgContA) imgContA.style.display = "flex";
+    const tA = document.getElementById("title-aureliano");
+    const tAl = document.getElementById("title-alicia");
+    if (tA) tA.style.display = "block";
+    if (tAl) tAl.style.display = "block";
 
     const views = document.querySelectorAll('.image-view');
     views.forEach(v => v.style.display = "none");
 
-    document.querySelector(".floating-btn").style.display = "none";
+    const fbtn = document.querySelector(".floating-btn");
+    if (fbtn) fbtn.style.display = "none";
 }
+
+// 🎧 SISTEMA UNIVERSAL DE AUDIO + ICONO (robusto)
+document.addEventListener("DOMContentLoaded", () => {
+    const audioBlocks = document.querySelectorAll('.audio-control');
+
+    // variables globales para controlar un único audio activo
+    window._currentAudio = null;
+    window._currentButton = null;
+    window._currentIconHolder = null;
+
+    // función global para resetear el audio en reproducción (pausa y restaura texto/icono)
+    window._resetCurrentAudio = function() {
+        try {
+            if (window._currentAudio) {
+                window._currentAudio.pause();
+            }
+            if (window._currentButton) {
+                // restaurar texto e indicador del botón
+                window._currentButton.textContent = "Explicación de la obra";
+                // re-insertar icon SVG al inicio (silencioso/por defecto)
+                if (window._currentIconHolder) {
+                    window._currentIconHolder.innerHTML = `
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2c0-1.77-.77-3.29-2-4.3v8.59c1.23-1.01 2-2.53 2-4.29zm2.5 0c0 3.04-1.23 5.52-3 7.24v-1.66c1.23-1.39 2-3.17 2-5.58s-.77-4.19-2-5.58V4.76c1.77 1.72 3 4.2 3 7.24z"/>
+                        </svg>`;
+                }
+            }
+        } catch (e) {
+            // no hacer nada si ocurre error
+            console.warn('Error al resetear audio actual:', e);
+        } finally {
+            window._currentAudio = null;
+            window._currentButton = null;
+            window._currentIconHolder = null;
+        }
+    };
+
+    audioBlocks.forEach(block => {
+        try {
+            const audioFile = block.getAttribute("data-audio");
+            if (!audioFile) return; // nada que hacer
+
+            const button = block.querySelector(".btn-audio");
+            const iconHolder = block.querySelector(".audio-icon");
+
+            // proteger: si falta el botón o iconHolder, saltamos este bloque
+            if (!button) return;
+            if (!iconHolder) return;
+
+            // crear audio (no lo añadimos al DOM)
+            const audio = new Audio(audioFile);
+            audio.preload = 'none'; // evitar cargar automat. muchos audios
+
+            // iconos (string HTML)
+            const iconPlay = `
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2c0-1.77-.77-3.29-2-4.3v8.59c1.23-1.01 2-2.53 2-4.29zm2.5 0c0 3.04-1.23 5.52-3 7.24v-1.66c1.23-1.39 2-3.17 2-5.58s-.77-4.19-2-5.58V4.76c1.77 1.72 3 4.2 3 7.24z"/>
+                </svg>`;
+            const iconPause = `
+                <svg viewBox="0 0 24 24">
+                    <path d="M16.5 12c0 1.76-.77 3.28-2 4.29V7.71c1.23 1 2 2.52 2 4.29zm2.5 0c0-3.03-1.23-5.51-3-7.23v1.65c1.23 1.39 2 3.16 2 5.58s-.77 4.19-2 5.58v1.66c1.77-1.72 3-4.2 3-7.24zM3 10v4h4l5 5V5l-5 5H3z"/>
+                </svg>`;
+
+            // inicial: asegurarnos que muestra el icono "play" y el texto correcto
+            iconHolder.innerHTML = iconPlay;
+            button.textContent = "Explicación de la obra";
+
+            // click handler
+            button.addEventListener("click", (ev) => {
+                ev.preventDefault();
+
+                // si hay otro audio activo, pausarlo y restaurar su botón
+                if (window._currentAudio && window._currentAudio !== audio) {
+                    window._resetCurrentAudio();
+                }
+
+                if (audio.paused) {
+                    audio.play().catch(err => {
+                        // posibles errores de reproducción automática en algunos navegadores
+                        console.warn('No se pudo reproducir el audio:', err);
+                    });
+                    // actualizar referencias globales
+                    window._currentAudio = audio;
+                    window._currentButton = button;
+                    window._currentIconHolder = iconHolder;
+
+                    // actualizar UI del botón actual
+                    // insertar iconPause y texto "Pausar audio" manteniendo el icon al inicio
+                    iconHolder.innerHTML = iconPause;
+                    // poner texto después del icono (asegurar que no borremos el icono)
+                    // como button.textContent reemplaza todo, mejor crear un span para el texto:
+                    // pero para mantenerlo simple: set button content preserving icon
+                    // así que primero guardamos el iconHTML y luego lo colocamos más el texto
+                    // (aquí iconHolder ya contiene el svg; solo actualizamos el texto sin borrar iconHolder)
+                    // Para hacerlo sencillo: actualizamos aria-pressed y luego añadimos un text node:
+                    button.setAttribute('aria-pressed', 'true');
+                    // asegurar que el visible text esté correctamente mostrado (añadir un small text node)
+                    // eliminamos cualquier texto residual y luego añadimos un texto después del iconHolder
+                    // simplest approach: set button.innerHTML = icon + 'Pausar audio'
+                    button.innerHTML = iconPause + 'Pausar audio';
+                } else {
+                    audio.pause();
+                    // restaurar icono y texto
+                    iconHolder.innerHTML = iconPlay;
+                    button.innerHTML = iconPlay + 'Explicación de la obra';
+                    button.setAttribute('aria-pressed', 'false');
+                    // limpiar referencias
+                    if (window._currentAudio === audio) {
+                        window._currentAudio = null;
+                        window._currentButton = null;
+                        window._currentIconHolder = null;
+                    }
+                }
+            });
+
+            // cuando termina el audio
+            audio.addEventListener('ended', () => {
+                try {
+                    iconHolder.innerHTML = iconPlay;
+                    button.innerHTML = iconPlay + 'Explicación de la obra';
+                    button.setAttribute('aria-pressed', 'false');
+                    if (window._currentAudio === audio) {
+                        window._currentAudio = null;
+                        window._currentButton = null;
+                        window._currentIconHolder = null;
+                    }
+                } catch (e) {
+                    console.warn('Error al manejar ended:', e);
+                }
+            });
+
+        } catch (e) {
+            // proteger cualquier fallo por bloque para que no rompa el resto del script
+            console.warn('Error inicializando bloque de audio:', e);
+        }
+    });
+});
 </script>
+
 </body>
 </html>
